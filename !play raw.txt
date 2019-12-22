@@ -1,0 +1,151 @@
+{
+  "name": "play",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "XPnMI",
+  "actions": [
+    {
+      "channel": "0",
+      "varName": "",
+      "name": "Join Voice Channel"
+    },
+    {
+      "info": "1",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "song",
+      "name": "Store Command Params"
+    },
+    {
+      "iftrue": "2",
+      "iftrueVal": "8",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check is Bot in Voice Channel"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "Seems like you are not connected to a voice channel. Please connect to a voice channel and try again!",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "type": "0",
+      "input": "${tempVars(\"song\")}",
+      "info0": "1",
+      "info1": "1",
+      "apikey": "***********************************",
+      "results": "1",
+      "storage": "3",
+      "varName": "videourl",
+      "name": "YouTube Search"
+    },
+    {
+      "url": "${globalVars(\"videourl\")}",
+      "seek": "0",
+      "volume": "50",
+      "passes": "1",
+      "bitrate": "",
+      "type": "0",
+      "name": "Play YouTube Video"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "type": "0",
+      "input": "${tempVars(\"song\")}",
+      "info0": "1",
+      "info1": "1",
+      "apikey": "*************************************",
+      "results": "1",
+      "storage": "3",
+      "varName": "videourl",
+      "name": "YouTube Search"
+    },
+    {
+      "url": "${globalVars(\"videourl\")}",
+      "seek": "0",
+      "volume": "50",
+      "passes": "1",
+      "bitrate": "",
+      "type": "0",
+      "name": "Play YouTube Video"
+    },
+    {
+      "video": "${globalVars(\"videourl\")}",
+      "info": "2",
+      "storage": "1",
+      "varName": "ytTitle",
+      "name": "Store YouTube Info"
+    },
+    {
+      "video": "${tempVars(\"videourl\")}",
+      "info": "6",
+      "storage": "1",
+      "varName": "ytThumb",
+      "name": "Store YouTube Info"
+    },
+    {
+      "video": "${tempVars(\"videourl\")}",
+      "info": "12",
+      "storage": "1",
+      "varName": "ytDuration",
+      "name": "Store YouTube Info"
+    },
+    {
+      "title": "${tempVars(\"ytTitle\")}",
+      "author": "Song Added to queue!",
+      "color": "",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "${tempVars(\"ytThumb\")}",
+      "timestamp": "false",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "addedQueue",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "addedQueue",
+      "fieldName": "Duration",
+      "message": "${tempVars(\"ytDuration\")}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "addedQueue",
+      "fieldName": "Requested By",
+      "message": "${member}",
+      "inline": "0",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "addedQueue",
+      "channel": "0",
+      "varName2": "",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "messageContent": "",
+      "name": "Send Embed Message"
+    }
+  ]
+}
